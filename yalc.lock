@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "react-native-secure-keystore": {
+      "signature": "2b7ec8a7c69a60aec6c9dacc6a7f5eb4",
+      "file": true,
+      "replaced": "https://github.com/mosip/secure-keystore/tree/inji-238-invalidate-keys"
+    }
+  }
+}
