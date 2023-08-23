@@ -2,7 +2,6 @@ package com.reactnativesecurekeystore.biometrics
 
 import BiometricPromptAuthCallback
 import android.os.Build
-import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.UserNotAuthenticatedException
 import android.util.Log
 import androidx.biometric.BiometricManager
@@ -14,7 +13,6 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.UiThreadUtil
 import com.reactnativesecurekeystore.common.Util
 import com.reactnativesecurekeystore.exception.ErrorCode
-import com.reactnativesecurekeystore.exception.KeyInvalidatedException
 import java.security.SignatureException
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -56,9 +54,6 @@ class Biometrics(
         is IllegalBlockSizeException, is SignatureException -> {
           Log.e(logTag, "Calling action failed due to auth exception", e)
           authenticate(createCryptoObject, action, true)
-        }
-        is KeyPermanentlyInvalidatedException -> {
-           throw KeyInvalidatedException("Key Invalidated due to biometric enrollment")
         }
         else -> throw e
       }
